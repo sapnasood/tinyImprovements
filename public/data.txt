@@ -1,0 +1,31 @@
+let data ={
+    username:'Sapna'
+}
+
+// Connect to Mongo DB
+ mongoose.connect('mongodb://localhost/tinyimprovements', {useNewUrlParser: true});
+
+db.Users.create(data).then(function(response){
+    console.log(response);
+}).catch(function(err){
+    console.log(err.message);
+});
+
+
+
+
+let data ={
+    title:'Best boss ever',
+    from:'Glend',
+    to:'Ming',
+    message:'Ming is splendid to work for!'
+}
+
+// Connect to Mongo DB
+mongoose.connect('mongodb://localhost/tinyimprovements', {useNewUrlParser: true});
+
+db.Kudos.create(data).then(function(response){
+  console.log(response);
+}).catch(function(err){
+ console.log(err.message)
+})
