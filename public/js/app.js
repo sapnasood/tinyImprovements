@@ -13,10 +13,10 @@ method: 'GET'
 for(let i =0; i < response.length; i++)
 {
 $('#kudo-from')
-.append(`<option class='from' value='${response[i]._id}'>${response[i].username}</option>`)
+.append(`<option class='from' value='${response[i].username}'>${response[i].username}</option>`)
 
 $('#kudo-to')
-.append(`<option class='to' value='${response[i]._id}'>${response[i].username}</option>`)
+.append(`<option class='to' value='${response[i].username}'>${response[i].username}</option>`)
 }
 })
 $('#kudoModal').modal('open');
@@ -27,8 +27,8 @@ event.preventDefault();
 // Post kudos to DB
 let dataNew = {
 title: $('#title').val(),
-from: $('.from').val(),
-to: $('.to').val(),
+from: $('#kudo-from').val(),
+to: $('#kudo-to').val(),
 message: $('#message').val()
 };
 
@@ -62,8 +62,11 @@ method:'GET'
   let cardBody = $('<div>');
   cardBody.addClass('card-body');
   // cardBody.attr('id','card-body');
-  let h5 = $('<h5>').text(data[i].title);
-  cardBody.append(h5);
+  let title = $('<h5>').text(data[i].title);
+  let from = $('<h4>').text(`From: ${data[i].from}`);
+  let to = $('<h4>').text(`To: ${data[i].to}`);
+  let message = $('<h4>').text(data[i].message);
+  cardBody.append(title, from, to, message);
   card.append(cardBody);
   $('#kudo-card').append(card)
   }
